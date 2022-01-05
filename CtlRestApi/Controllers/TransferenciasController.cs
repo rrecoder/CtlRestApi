@@ -90,12 +90,12 @@ namespace CtlRestApi.Controllers
             }
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id)
+        [HttpPut("{id}/{estado}")]
+        public async Task<IActionResult> Put(int id, EstadosTransferencias estado)
         {
             try
             {
-                var transferenciaActualizada = await _transferenciaService.Update(id);
+                var transferenciaActualizada = await _transferenciaService.Update(id, estado);
                 return Ok(transferenciaActualizada);
             }
             catch (Exception ex)
@@ -104,14 +104,6 @@ namespace CtlRestApi.Controllers
                 _logger.LogError(ex, JsonSerializer.Serialize(error));
                 return BadRequest(error);
             }
-        }
-
-        [HttpDelete]
-        public IActionResult Delete()
-        {
-            var error = CrearErrorDTO("Método no implementado");
-            _logger.LogError(JsonSerializer.Serialize(error));
-            return BadRequest(error);
         }
 
         private ErrorDTO CrearErrorDTO(string mensaje)

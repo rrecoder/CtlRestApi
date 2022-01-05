@@ -71,14 +71,6 @@ namespace CtlRestApi.Controllers
             }
         }
 
-        [HttpDelete]
-        public IActionResult Delete()
-        {
-            var error = CrearErrorDTO("Método no implementado");
-            _logger.LogError(JsonSerializer.Serialize(error));
-            return BadRequest(error);
-        }
-
         private ErrorDTO CrearErrorDTO(string mensaje)
         {
             return new ErrorDTO()

@@ -133,14 +133,14 @@ namespace CtlRestApi.Services
             return nuevaTransferencia;
         }
 
-        public async Task<Transferencia> Update(int id)
+        public async Task<Transferencia> Update(int id, EstadosTransferencias estado)
         {
             var transferencia = await _context.Transferencias.FindAsync(id);
             if (transferencia == null)
             {
                 throw new ErrorDeArgumentosException($"No se encuentra la transferencia con ID: {id}");
             }
-            transferencia.Estado = EstadosTransferencias.Aceptado;
+            transferencia.Estado = estado;
             _context.Transferencias.Update(transferencia);
             await _context.SaveChangesAsync();
             return transferencia;

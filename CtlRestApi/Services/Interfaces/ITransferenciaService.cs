@@ -1,4 +1,5 @@
-﻿using CtlRestApi.Models;
+﻿using CtlRestApi.Infrastructure.Enums;
+using CtlRestApi.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -14,6 +15,6 @@ namespace CtlRestApi.Services
 
         Task<Transferencia> Create(TransferenciaDTO transferencia);
 
-        Task<Transferencia> Update(int id);
+        Task<Transferencia> Update(int id, EstadosTransferencias estado);
     }
 }
